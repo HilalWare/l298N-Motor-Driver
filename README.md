@@ -36,7 +36,8 @@ void loop() {
   motorDriver.runB(RELEASE);
 
   delay(1000); // 1 saniye bekleyin
-}```
+}
+```
 
 
 Bu örnek kod, L298N sürücüsünün setPWMpins() fonksiyonu ile PWM pinlerini ayarlar ve setSpeedA() ve setSpeedB() fonksiyonları ile motorların hızını ayarlar. Daha sonra, runA() ve runB() fonksiyonları ile motorların yönünü belirler ve FORWARD, BACKWARD veya RELEASE değerlerini kullanarak motorları çalıştırır veya durdurur.
