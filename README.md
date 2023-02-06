@@ -42,4 +42,44 @@ void loop() {
 
 Bu örnek kod, L298N sürücüsünün setPWMpins() fonksiyonu ile PWM pinlerini ayarlar ve setSpeedA() ve setSpeedB() fonksiyonları ile motorların hızını ayarlar. Daha sonra, runA() ve runB() fonksiyonları ile motorların yönünü belirler ve FORWARD, BACKWARD veya RELEASE değerlerini kullanarak motorları çalıştırır veya durdurur.
 
-Umarım bu bilgi sizin için faydalı olmuştur. Eğer daha fazla sorunuz olurs
+
+
+<h1> English </h1>
+The L298N is a DC motor driver that is used to control the speed and direction of two DC motors or one stepper motor. This driver operates the motors based on input signals received from a device such as a microcontroller or a computer.
+
+To control the operation of a DC motor, the L298N requires two different input signals:
+
+A PWM (Pulse Width Modulation) signal to adjust the speed of the motor
+A "right turn" signal and a "left turn" signal to adjust the direction of the motor
+Below is an example code that demonstrates how to control two DC motors using the L298N:
+```c++
+#include <L298N.h>
+
+L298N motorDriver(ENA, IN1, IN2, ENB, IN3, IN4); // Create L298N driver
+
+void setup() {
+  // Connect PWM pins to adjust motor speed
+  motorDriver.setPWMpins(3, 11, 6, 5);
+}
+
+void loop() {
+  // Turn motor A right at 50% speed
+  motorDriver.setSpeedA(50);
+  motorDriver.runA(FORWARD);
+
+  // Turn motor B left at 50% speed
+  motorDriver.setSpeedB(50);
+  motorDriver.runB(BACKWARD);
+
+  delay(2000); // Wait 2 seconds
+
+  // Stop motor A
+  motorDriver.runA(RELEASE);
+
+  // Stop motor B
+  motorDriver.runB(RELEASE);
+
+  delay(1000); // Wait 1 second
+}
+```
+This example code sets the PWM pins using the setPWMpins() function and adjusts the speed of the motors using the setSpeedA() and setSpeedB() functions. Then, it determines the direction of the motors using the runA() and runB() functions and operates or stops the motors using the FORWARD, BACKWARD, or RELEASE values.
